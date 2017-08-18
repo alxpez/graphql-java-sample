@@ -38,6 +38,7 @@ public class LinkRepository {
         Document doc = new Document();
         doc.append("url", link.getUrl());
         doc.append("description", link.getDescription());
+        doc.append("postedBy", link.getUserId());
         links.insertOne(doc);
     }
 
@@ -45,6 +46,7 @@ public class LinkRepository {
         return new Link(
                 doc.get("_id").toString(),
                 doc.getString("url"),
-                doc.getString("description"));
+                doc.getString("description"),
+                doc.getString("postedBy"));
     }
 }
